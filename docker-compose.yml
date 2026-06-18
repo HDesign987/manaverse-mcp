@@ -1,0 +1,7 @@
+services:
+  manaverse-mcp:
+    build: .
+    container_name: manaverse-mcp
+    restart: unless-stopped
+    ports:
+      - "3333:3333"
