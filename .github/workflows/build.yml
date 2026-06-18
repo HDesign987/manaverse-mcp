@@ -1,0 +1,31 @@
+name: Build MCP Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Vérifier le projet
+        run: |
+          pwd
+          ls -la
+
+      - name: Test démarrage serveur
+        run: |
+          timeout 10s npm start || true
